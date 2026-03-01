@@ -1,0 +1,47 @@
+{% extends "site_mrk/base.html" %}
+
+{% block content %}
+<div class="card p-4 shadow-sm">
+    <form method="get" class="row g-3 align-items-end mb-4">
+        <div class="col-md-4">
+            <label class="form-label">Фильтр по группе:</label>
+            <select name="group" class="form-select">
+                <option value="">Все группы</option>
+                {% for g in groups %}
+                    <option value="{{ g.id }}" {% if g.id == selected_group %}selected{% endif %}>{{ g.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="col-md-2">
+            <button type="submit" class="btn btn-primary w-100">Показать</button>
+        </div>
+    </form>
+
+    <table class="table table-hover">
+        <thead class="table-light">
+            <tr>
+                <th>День</th>
+                <th>Время</th>
+                <th>Группа</th>
+                <th>Предмет</th>
+                <th>Преподаватель</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for s in schedules %}
+            <tr>
+                <td><strong>{{ s.get_day_of_week_display }}</strong></td>
+                <td>{{ s.time|time:"H:i" }}</td>
+                <td><span class="badge bg-info text-dark">{{ s.group.name }}</span></td>
+                <td>{{ s.subject.title }}</td>
+                <td>{{ s.teacher.name }}</td>
+                <td><a href="{% url 'schedule_edit' s.id %}" class="text-decoration-none">✏️</a></td>
+            </tr>
+            {% empty %}
+            <tr><td colspan="6" class="text-center">Расписание пока пусто :(</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

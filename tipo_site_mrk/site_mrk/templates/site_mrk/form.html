@@ -1,0 +1,23 @@
+{% extends "site_mrk/base.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card p-4 shadow-sm">
+            <h3>{{ title }}</h3>
+            <hr>
+            <form method="post">
+                {% csrf_token %}
+                {% for field in form %}
+                    <div class="mb-3">
+                        <label class="form-label">{{ field.label }}</label>
+                        {{ field }}
+                    </div>
+                {% endfor %}
+                <button type="submit" class="btn btn-success w-100">Сохранить</button>
+                <a href="{% url 'index' %}" class="btn btn-link w-100 mt-2 text-muted">Отмена</a>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
