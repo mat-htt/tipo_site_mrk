@@ -1,0 +1,381 @@
+/* Базовые переменные - УБИРАЕМ [data-theme] и делаем через классы */
+.theme-light {
+    --bg-body: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --bg-card: rgba(255, 255, 255, 0.95);
+    --bg-navbar: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+    --text-primary: #2c3e50;
+    --text-secondary: #6c757d;
+    --border-color: #dee2e6;
+    --primary: #3498db;
+    --primary-hover: #2980b9;
+    --danger: #e74c3c;
+    --success: #27ae60;
+    --table-hover: #f8f9fa;
+    --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.theme-dark {
+    --bg-body: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    --bg-card: rgba(22, 33, 62, 0.95);
+    --bg-navbar: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 100%);
+    --text-primary: #e0e0e0;
+    --text-secondary: #a0a0a0;
+    --border-color: #2d2d4a;
+    --primary: #3498db;
+    --primary-hover: #5dade2;
+    --danger: #e74c3c;
+    --success: #27ae60;
+    --table-hover: rgba(52, 152, 219, 0.1);
+    --shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.theme-forest {
+    --bg-body: linear-gradient(135deg, #1a472a 0%, #2d6a4f 100%);
+    --bg-card: rgba(45, 106, 79, 0.95);
+    --bg-navbar: linear-gradient(135deg, #081c15 0%, #1b4332 100%);
+    --text-primary: #e8f5e9;
+    --text-secondary: #b7e4c7;
+    --border-color: #40916c;
+    --primary: #52b788;
+    --primary-hover: #40916c;
+    --danger: #e63946;
+    --success: #2d6a4f;
+    --table-hover: rgba(82, 183, 136, 0.2);
+    --shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.theme-ocean {
+    --bg-body: linear-gradient(135deg, #03045e 0%, #0077b6 100%);
+    --bg-card: rgba(0, 119, 182, 0.95);
+    --bg-navbar: linear-gradient(135deg, #023e8a 0%, #03045e 100%);
+    --text-primary: #caf0f8;
+    --text-secondary: #90e0ef;
+    --border-color: #00b4d8;
+    --primary: #00b4d8;
+    --primary-hover: #48cae4;
+    --danger: #ff6b6b;
+    --success: #00f5d4;
+    --table-hover: rgba(0, 180, 216, 0.2);
+    --shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.theme-sunset {
+    --bg-body: linear-gradient(135deg, #2d1b4e 0%, #6c3483 100%);
+    --bg-card: rgba(74, 44, 109, 0.95);
+    --bg-navbar: linear-gradient(135deg, #4a2c6d 0%, #2d1b4e 100%);
+    --text-primary: #ffeaa7;
+    --text-secondary: #fdcb6e;
+    --border-color: #ff7675;
+    --primary: #ff6b6b;
+    --primary-hover: #ff8787;
+    --danger: #ff4757;
+    --success: #00cec9;
+    --table-hover: rgba(255, 107, 107, 0.2);
+    --shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.theme-matrix {
+    --bg-body: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+    --bg-card: rgba(13, 31, 13, 0.95);
+    --bg-navbar: linear-gradient(135deg, #003300 0%, #0a0a0a 100%);
+    --text-primary: #00ff41;
+    --text-secondary: #00cc33;
+    --border-color: #00ff41;
+    --primary: #00ff41;
+    --primary-hover: #00cc33;
+    --danger: #ff0000;
+    --success: #00ff41;
+    --table-hover: rgba(0, 255, 65, 0.1);
+    --shadow: 0 8px 32px rgba(0, 255, 65, 0.1);
+}
+
+/* Глобальные стили */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--bg-body);
+    color: var(--text-primary);
+    font-family: 'Segoe UI', 'Poppins', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+    transition: all 0.3s ease;
+}
+
+/* Навбар - исправленный */
+.navbar {
+    background: var(--bg-navbar) !important;
+    backdrop-filter: blur(10px);
+    box-shadow: var(--shadow);
+    padding: 1rem 0;
+}
+
+.navbar-brand {
+    color: white !important;
+    font-weight: bold;
+    font-size: 1.5rem;
+    transition: transform 0.3s;
+}
+
+.navbar-brand:hover {
+    transform: scale(1.05);
+}
+
+.navbar-nav .nav-link {
+    color: rgba(255, 255, 255, 0.95) !important;
+    transition: all 0.3s;
+    font-weight: 500;
+    margin: 0 5px;
+}
+
+.navbar-nav .nav-link:hover {
+    color: var(--primary) !important;
+    transform: translateY(-2px);
+}
+
+/* Карточки */
+.card {
+    background: var(--bg-card);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    margin-bottom: 20px;
+    transition: all 0.3s;
+    box-shadow: var(--shadow);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.2);
+}
+
+.card-header {
+    background: rgba(0, 0, 0, 0.2);
+    border-bottom: 3px solid var(--primary);
+    color: var(--text-primary);
+    font-weight: bold;
+    padding: 1rem 1.5rem;
+    border-radius: 20px 20px 0 0 !important;
+}
+
+/* Таблица */
+.table {
+    color: var(--text-primary);
+    margin-bottom: 0;
+}
+
+.table thead th {
+    background: rgba(0, 0, 0, 0.1);
+    border-bottom: 2px solid var(--primary);
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.table tbody tr {
+    border-bottom: 1px solid var(--border-color);
+    transition: all 0.3s;
+}
+
+.table-hover tbody tr:hover {
+    background-color: var(--table-hover);
+    cursor: pointer;
+    transform: scale(1.01);
+}
+
+/* Кнопки */
+.btn {
+    border-radius: 12px;
+    padding: 8px 24px;
+    font-weight: 600;
+    transition: all 0.3s;
+    border: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s;
+}
+
+.btn:hover::before {
+    left: 100%;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary), var(--primary-hover));
+    color: white;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.4);
+}
+
+.btn-success {
+    background: linear-gradient(135deg, var(--success), #219a52);
+    color: white;
+}
+
+.btn-success:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(39, 174, 96, 0.4);
+}
+
+.btn-danger {
+    background: linear-gradient(135deg, var(--danger), #c0392b);
+    color: white;
+}
+
+.btn-danger:hover {
+    transform: translateY(-2px);
+}
+
+/* Формы */
+.form-control, .form-select {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    border-radius: 12px;
+    padding: 10px 15px;
+    transition: all 0.3s;
+}
+
+.form-control:focus, .form-select:focus {
+    background: var(--bg-card);
+    color: var(--text-primary);
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+    transform: translateY(-2px);
+}
+
+.form-label {
+    color: var(--text-primary);
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+/* Модальные окна */
+.modal-content {
+    background: var(--bg-card);
+    backdrop-filter: blur(20px);
+    color: var(--text-primary);
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+}
+
+.modal-header {
+    border-bottom-color: var(--border-color);
+    border-radius: 20px 20px 0 0;
+}
+
+.modal-footer {
+    border-top-color: var(--border-color);
+}
+
+/* Алерты */
+.alert {
+    border-radius: 12px;
+    border: none;
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Спиннер */
+.spinner-border {
+    color: var(--primary);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+
+    .btn {
+        padding: 6px 16px;
+        font-size: 14px;
+    }
+
+    .card-header h4 {
+        font-size: 18px;
+    }
+}
+
+/* Стили для расписания */
+.schedule-table {
+    background: var(--bg-card);
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.day-header {
+    background: linear-gradient(135deg, var(--primary), var(--primary-hover));
+    color: white;
+    padding: 12px;
+    border-radius: 12px;
+    margin-bottom: 10px;
+}
+
+/* Анимация загрузки */
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.loading {
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* Кнопка темы в навбаре */
+.dropdown-toggle::after {
+    margin-left: 8px;
+}
+
+.dropdown-menu {
+    background: var(--bg-card);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+}
+
+.dropdown-item {
+    color: var(--text-primary);
+    transition: all 0.3s;
+    border-radius: 8px;
+    margin: 2px 0;
+}
+
+.dropdown-item:hover {
+    background: var(--primary);
+    color: white;
+    transform: translateX(5px);
+}
+
+.dropdown-item.active {
+    background: var(--primary);
+    color: white;
+}
